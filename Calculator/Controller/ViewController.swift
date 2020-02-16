@@ -27,6 +27,8 @@ class ViewController: UIViewController {
         }
     }
     
+    private var logic = CalculatorLogic()
+    
     
     @IBAction func calcButtonPressed(_ sender: UIButton) {
         
@@ -34,14 +36,13 @@ class ViewController: UIViewController {
             
         isFinishedTypingNumber = true
         
+        logic.setNumber(displayValue)
+        
         if let calcMethod = sender.currentTitle {
             
-            let logic = CalculatorLogic(number: displayValue)
-            
-            guard let result = logic.calculation(titleText: calcMethod) else {
-                fatalError("The result of the calculation is nil")
+            if let result = logic.calculate(symbol: calcMethod) {
+                displayValue = result
             }
-            displayValue = result
 
         }
                 
