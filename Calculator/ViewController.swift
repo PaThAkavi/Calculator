@@ -20,8 +20,20 @@ class ViewController: UIViewController {
             
         isFinishedTypingNumber = true
         
-        if sender.currentTitle == "AC" {
+        //Initial functionality
+        switch sender.currentTitle {
+        case "AC":
             displayLabel.text = "0"
+        case "+/-":
+            var num = Float(displayLabel.text!)
+            num = -num!
+            displayLabel.text = String(num!)
+        case "%":
+            var num = Float(displayLabel.text!)
+            num = num! / 100
+            displayLabel.text = String(num!)
+        default:
+            print("Error")
         }
                 
     }
